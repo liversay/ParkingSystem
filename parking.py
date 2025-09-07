@@ -1,7 +1,7 @@
 from functions import *
 
 def main():
-    """Función principal del Sistema"""
+    # Función principal del Sistema
     print("🚀 Iniciando Sistema de Parking Inteligente...")
 
     # Llenar el parqueo con algunos autos iniciales para pruebas

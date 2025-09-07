@@ -2,7 +2,7 @@ import datetime
 import random
 import os
 
-# variables
+# Variables
 CAPACIDAD_MAXIMA = 100
 TARIFA_POR_HORA = 2.50
 
@@ -11,9 +11,7 @@ placas_estacionadas = []
 eventos_parking = []
 historial_autos = {}
 
-# funciones principales
-
-
+# Funciones
 def calcular_porcentaje_ocupacion():
     return (espacios_ocupados / CAPACIDAD_MAXIMA) * 100
 
@@ -149,7 +147,7 @@ def simular_movimientos(entradas, salidas):
 
 
 def validar_numero_entero(mensaje, minimo=0, maximo=None):
-    """Valida que el usuario ingrese un número entero válido"""
+    # Valida que el usuario ingrese un número entero válido
     while True:
         try:
             valor = int(input(mensaje))
@@ -165,7 +163,7 @@ def validar_numero_entero(mensaje, minimo=0, maximo=None):
 
 
 def validar_placa(placa):
-    """Valida el formato de una placa (ABC123)"""
+    # Valida el formato de una placa (ABC123)
     if len(placa) != 6:
         return False
     if not placa[:3].isalpha():
@@ -176,7 +174,6 @@ def validar_placa(placa):
 
 
 def obtener_placa_usuario():
-    """Obtiene una placa válida del usuario"""
     while True:
         placa = input("Ingrese la placa (formato ABC123): ").upper()
         if validar_placa(placa):
