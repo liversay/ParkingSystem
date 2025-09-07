@@ -1,5 +1,6 @@
 import datetime
 import random
+import os
 
 # variables
 CAPACIDAD_MAXIMA = 100
@@ -33,7 +34,7 @@ def mostrar_estado_parqueo():
     porcentaje = calcular_porcentaje_ocupacion()
     estado = obtener_estado_parqueo()
 
-    print(f"⁄n--- ESTADO DEL PARKING ---")
+    print(f"\n--- ESTADO DEL PARKING ---")
     print(f"Espacios ocupados: {espacios_ocupados}/{CAPACIDAD_MAXIMA}")
     print(f"Espacios libres: {espacios_libres}")
     print(f"Estado: {estado.upper()}")
@@ -99,7 +100,7 @@ def salida_auto(placa):
     eventos_parking.append(evento)
     historial_autos[placa].append(evento)
 
-    print(f"✅ Auto {placa} salió del parking. Tarifa: ${tarifa:.2f}")
+    print(f"✅ Auto {placa} salió del parking. 💵 Tarifa: ${tarifa:.2f}")
     return True
 
 
@@ -183,9 +184,12 @@ def obtener_placa_usuario():
         else:
             print("❌ Formato de placa inválido. Use el formato ABC123")
 
+def limpiar_pantalla():
+    input("\n📱 Presiona Enter para continuar...")
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def mostrar_menu():
-    """Muestra el menú principal"""
+    # Muestra el menú principal
     print("\n" + "="*50)
     print("🏢 SISTEMA DE PARKING INTELIGENTE")
     print("="*50)

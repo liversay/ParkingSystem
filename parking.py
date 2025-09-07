@@ -18,15 +18,18 @@ def main():
 
             if opcion == 1:
                 mostrar_estado_parqueo()
+                limpiar_pantalla()
 
             elif opcion == 2:
                 placa = obtener_placa_usuario()
                 entrada_auto(placa)
                 mostrar_estado_parqueo()
+                limpiar_pantalla()
 
             elif opcion == 3:
                 entrada_auto()
                 mostrar_estado_parqueo()
+                limpiar_pantalla()
 
             elif opcion == 4:
                 if not placas_estacionadas:
@@ -36,13 +39,16 @@ def main():
                     placa = obtener_placa_usuario()
                     salida_auto(placa)
                     mostrar_estado_parqueo()
+                limpiar_pantalla()
 
             elif opcion == 5:
                 mostrar_autos_estacionados()
+                limpiar_pantalla()
 
             elif opcion == 6:
                 placa = obtener_placa_usuario()
                 mostrar_historial_auto(placa)
+                limpiar_pantalla()
 
             elif opcion == 7:
                 max_entradas = CAPACIDAD_MAXIMA - espacios_ocupados
@@ -58,6 +64,7 @@ def main():
 
                 simular_movimientos(entradas, salidas)
                 mostrar_estado_parqueo()
+                limpiar_pantalla()
 
             elif opcion == 8:
                 print("👋 ¡Gracias por usar el Sistema de Parking Inteligente!")
