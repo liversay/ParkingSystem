@@ -14,7 +14,7 @@ def main():
     while True:
         try:
             mostrar_menu()
-            opcion = validar_numero_entero("👉 Seleccione una opción: ", 1, 8)
+            opcion = validar_numero_entero("👉 Seleccione una opción: ", 1, 9)
 
             if opcion == 1:
                 mostrar_estado_parqueo()
@@ -51,22 +51,23 @@ def main():
                 limpiar_pantalla()
 
             elif opcion == 7:
+                print(f"Espacios disponibles: {CAPACIDAD_MAXIMA - len(placas_estacionadas)}")
                 max_entradas = CAPACIDAD_MAXIMA - espacios_ocupados
-                max_salidas = len(placas_estacionadas)
-
-                print(f"Máximo entradas posibles: {max_entradas}")
-                print(f"Máximo salidas posibles: {max_salidas}")
-
-                entradas = validar_numero_entero(
-                    "Número de entradas a simular: ", 0, max_entradas)
-                salidas = validar_numero_entero(
-                    "Número de salidas a simular: ", 0, max_salidas)
-
-                simular_movimientos(entradas, salidas)
+                entradas = validar_numero_entero("Número de entradas a simular: ", 0, max_entradas)
+                simular_entradas(entradas)
                 mostrar_estado_parqueo()
                 limpiar_pantalla()
 
             elif opcion == 8:
+                max_salidas = len(placas_estacionadas)
+                print(f"Máximo salidas posibles: {max_salidas}")
+                salidas = validar_numero_entero(
+                    "Número de salidas a simular: ", 0, max_salidas)
+                simular_salidas(salidas)
+                mostrar_estado_parqueo()
+                limpiar_pantalla()
+
+            elif opcion == 9:
                 print("👋 ¡Gracias por usar el Sistema de Parking Inteligente!")
                 break
 

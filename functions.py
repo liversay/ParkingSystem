@@ -12,6 +12,8 @@ eventos_parking = []
 historial_autos = {}
 
 # Funciones
+
+
 def calcular_porcentaje_ocupacion():
     return (espacios_ocupados / CAPACIDAD_MAXIMA) * 100
 
@@ -105,7 +107,7 @@ def salida_auto(placa):
 
 def mostrar_autos_estacionados():
     if not placas_estacionadas:
-        print("\n📭 No hay autos estacionados actualmente")
+        print("\n👻 No hay autos estacionados actualmente")
         return
 
     print(f"\n🚗 AUTOS ESTACIONADOS ({len(placas_estacionadas)}):")
@@ -124,27 +126,33 @@ def mostrar_historial_auto(placa):
         print(f"  • {fecha_hora} - {evento[2]}")
 
 
-def simular_movimientos(entradas, salidas):
-    print(f"\n🔄 Simulando {entradas} entradas y {salidas} salidas...")
+def simular_entradas(cantidad):
+    print(f"\n🔄 Simulando {cantidad} entradas...")
+    entradas_realizadas = 0
 
-    # Procesar entradas
-    for _ in range(entradas):
+    for _ in range(cantidad):
         if espacios_ocupados < CAPACIDAD_MAXIMA:
-            entrada_auto()
+            if entrada_auto():
+                entradas_realizadas += 1
+        else:
+            break
 
-    # Procesar salidas
+    print(f"✅ Entradas completadas: {entradas_realizadas}")
+
+
+def simular_salidas(cantidad):
+    print(f"\n🔄 Simulando {cantidad} salidas...")
     autos_disponibles = placas_estacionadas.copy()
     salidas_realizadas = 0
 
-    for _ in range(min(salidas, len(autos_disponibles))):
+    for _ in range(min(cantidad, len(autos_disponibles))):
         if autos_disponibles:
             placa_salida = random.choice(autos_disponibles)
             if salida_auto(placa_salida):
                 salidas_realizadas += 1
                 autos_disponibles.remove(placa_salida)
 
-    print(
-        f"✅ Simulación completada: {entradas} entradas, {salidas_realizadas} salidas")
+    print(f"✅ Salidas completadas: {salidas_realizadas}")
 
 
 def validar_numero_entero(mensaje, minimo=0, maximo=None):
@@ -182,14 +190,15 @@ def obtener_placa_usuario():
         else:
             print("❌ Formato de placa inválido. Use el formato ABC123")
 
+
 def limpiar_pantalla():
-    input("\n📱 Presiona Enter para continuar...")
+    input("\nPresiona Enter para continuar...")
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
 def mostrar_menu():
-    # Muestra el menú principal
     print("\n" + "="*50)
-    print("🏢 SISTEMA DE PARKING INTELIGENTE")
+    print("🏎️  SISTEMA DE PARKING INTELIGENTE")
     print("="*50)
     print("1. Ver estado del parking")
     print("2. Entrada de auto (placa específica)")
@@ -197,6 +206,7 @@ def mostrar_menu():
     print("4. Salida de auto")
     print("5. Mostrar autos estacionados")
     print("6. Ver historial de un auto")
-    print("7. Simular movimientos aleatorios")
-    print("8. Salir")
+    print("7. Simular entradas aleatorias")
+    print("8. Simular salidas aleatorias")
+    print("9. Salir")
     print("="*50)
