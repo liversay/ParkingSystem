@@ -98,7 +98,8 @@ def salida_auto(placa):
     eventos_parking.append(evento)
     historial_autos[placa].append(evento)
 
-    print(f"✅ Auto {placa} salió del parking. 💵 Tarifa: ${tarifa:.2f}")
+    print(
+        f"✅ Auto {placa} salió del parking - 💵 Tarifa: ${tarifa:.2f} por {horas_estacionado:.1f} horas")
     return True
 
 
